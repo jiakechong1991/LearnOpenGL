@@ -120,10 +120,10 @@ int main()
     // ---------
     glGenTextures(1, &texture2);
     glBindTexture(GL_TEXTURE_2D, texture2);
-    // set the texture wrapping parameters
+    // set the texture wrapping[环绕] parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    // set texture filtering parameters
+    // set texture filtering[采样] parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     // load image, create texture and generate mipmaps
@@ -145,8 +145,9 @@ int main()
     ourShader.use(); // don't forget to activate/use the shader before setting uniforms!
     // either set it manually like so:
     glUniform1i(glGetUniformLocation(ourShader.ID, "texture1"), 0);
+    glUniform1i(glGetUniformLocation(ourShader.ID, "texture2"), 1);
     // or set it via the texture class
-    ourShader.setInt("texture2", 1);
+    //ourShader.setInt("texture2", 1); 这是另一种实现方式
 
 
 
